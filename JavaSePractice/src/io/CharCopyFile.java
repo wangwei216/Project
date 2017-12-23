@@ -1,5 +1,8 @@
 package io;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,6 +23,10 @@ import java.io.Writer;
  *  4. 判断是否把要写的文件全部写出来了,如果写完就关闭（后打开的先关闭原则）
  *  5. 关闭资源
  *
+ *二、 加一个字符的缓冲流，就是在选择流的时候在前面new一个BufferedWriter（写出文件）或者 BufferedReader（读文件）
+ *
+ *三、要是加一个节点的缓冲流的话 只是选择创建的缓冲流对象不一样用BufferedInputStream和 BufferedOutputStream
+ *	  1.这个有新增的方法newLine()  readLine()是一行一行的读取
  */
 public class CharCopyFile {
 	
@@ -33,8 +40,8 @@ public class CharCopyFile {
 		
 		//先把文件读出来
 		try {
-			reader = new FileReader(src);
-			writer = new FileWriter(des);
+			reader = new BufferedReader(new FileReader(src));  //这都是加上缓冲流之后的
+			writer = new BufferedWriter(new FileWriter(des));
 			
 			char[] flush = new char[100];
 			int len= 0;
