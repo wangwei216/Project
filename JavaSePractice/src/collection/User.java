@@ -1,4 +1,4 @@
-package mapPratice;
+package collection;
 
 import java.util.List;
 import java.io.ObjectInputStream.GetField;

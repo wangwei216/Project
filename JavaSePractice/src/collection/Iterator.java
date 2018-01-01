@@ -1,5 +1,5 @@
 
-package mapPratice;
+package collection;
 
 import java.util.*;
 
